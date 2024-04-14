@@ -17,13 +17,13 @@ describe('AppComponent', () => {
   it(`should have the 'mentoring-program-starter-kit' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('mentoring-program-starter-kit');
+    expect(app.title).toEqual('angular-challenge-2');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, mentoring-program-starter-kit');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-challenge-2');
   });
 });
