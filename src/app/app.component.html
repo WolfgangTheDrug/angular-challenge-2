@@ -1,12 +1,33 @@
-<div class="card" [style.width]="card.style">
-  <img src="{{ card.image }}" alt="x">
-  <div class="card-body">
-    <h1 class="card-title">{{ card.title }}</h1>
-    <p class="card-text">{{ card.description }}</p>
-    <div class="d-flex justify-content-between">
-      <button type="button" class="btn btn-primary" (click)="grow()">Full Screen</button>
-      <button type="button" class="btn btn-secondary" (click)="shrink()">20 rem</button>
-      <button type="button" class="btn btn-success" (click)="loadData()">Load Data</button>
-    </div>
-  </div>
+<div class="mx-5 px-5">
+  <h1 class="display-5">Students</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>First</td>
+        <td>Last</td>
+        <td>Grades</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (student of students; track student) {
+        <tr>
+          <td>{{ $index }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.surname }}</td>
+          <td class="mx-5">
+            @for (grade of student.grades; track grade) {
+              @if (grade > 3) {
+                <span class="badge text-bg-success me-1 font-weight-normal">{{ grade }}</span>
+              } @else if (grade === 3) {
+                <span class="badge text-bg-warning me-1">{{ grade }}</span>
+              } @else {
+                <span class="badge text-bg-danger me-1">{{ grade }}</span>
+              }
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>
