@@ -31,20 +31,15 @@ export class AppComponent {
       grades: [3, 2, 5],
     },
   ];
-  defaultStudent: StudentModel = {
-    id: '',
-    name: 'Select',
-    surname: 'student',
-    grades: []
-  }
-  selectedStudent: StudentModel = this.defaultStudent
+  selectedStudent: StudentModel | null = null;
 
   resetSelectedStudent(): void {
-    this.selectedStudent = this.defaultStudent;
+    this.selectedStudent = null;
   }
 
   setSelectedStudent(studentId: string): void {
-    this.selectedStudent = this.students.filter(s => s.id === studentId)[0];
+    const foundStudent: StudentModel | undefined = this.students.find(student => student.id === studentId);
+    this.selectedStudent = foundStudent ? foundStudent : null;
   }
 }
 
